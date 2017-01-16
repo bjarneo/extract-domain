@@ -1,0 +1,40 @@
+{
+  "name": "extract-domain",
+  "version": "1.0.0",
+  "description": "Extract domain from given string",
+  "main": "dist/extract-domain.min.js",
+  "author": "Bjarne Oeverli",
+  "license": "MIT",
+  "scripts": {
+    "build": "npm run pretty && NODE_ENV=production webpack",
+    "watch": "webpack --watch",
+    "test": "mocha -R spec index.test.js",
+    "pretty": "prettier --tab-width=4 --print-width=100 --single-quote --trailing-coma  --write *.js *.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bjarneo/extract-domain.git"
+  },
+  "homepage": "https://github.com/bjarneo/extract-domain",
+  "bugs": {
+    "url": "https://github.com/bjarneo/extract-domain/issues"
+  },
+  "keywords": [
+    "extract",
+    "get",
+    "fetch",
+    "string",
+    "url",
+    "domain",
+    "browser",
+    "node"
+  ],
+  "devDependencies": {
+    "google-closure-compiler-js": "^20161201.0.0",
+    "mocha": "^3.2.0",
+    "webpack": "^1.14.0"
+  },
+  "dependencies": {
+    "pretty": "^1.0.0"
+  }
+}
