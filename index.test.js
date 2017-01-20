@@ -20,11 +20,6 @@ const expected = [
 ];
 
 describe('extract domain', () => {
-    it('should extract given domain from string without sub domain', () => {
-        assert.equal(extractDomain(urls[3]), expected[1]);
-        assert.equal(extractDomain(urls[1]), expected[1]);
-    });
-
     it('should extract given domain from string', () => {
         assert.equal(extractDomain(urls[1]), expected[1]);
 
