@@ -1,6 +1,6 @@
 {
   "name": "extract-domain",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Extract domain from given string",
   "main": "dist/extract-domain.min.js",
   "author": "Bjarne Oeverli",
