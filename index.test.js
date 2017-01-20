@@ -16,15 +16,12 @@ const expected = [
     'npmjs.com',
     'example.com',
     'npmjs.com',
-    'example.com',
-    'example.com',
-    'example.com',
     'example.org'
 ];
 
 describe('extract domain', () => {
     it('should extract given domain from string without sub domain', () => {
-        assert.equal(extractDomain(urls[3]), expected[3]);
+        assert.equal(extractDomain(urls[3]), expected[1]);
         assert.equal(extractDomain(urls[1]), expected[1]);
     });
 
