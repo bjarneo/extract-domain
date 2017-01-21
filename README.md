@@ -14,6 +14,10 @@ Browser and Node.
 Usage
 --
 
+```bash
+$ npm i --save extract-domain
+```
+
 * urls = string|array
 * returns string|array
 
