@@ -7,7 +7,7 @@ Performant domain name extraction. No regex or array magic.
 
 However. This package will also remove the sub domain.
 
-Support
+Supports
 --
 Browser and Node.
 
