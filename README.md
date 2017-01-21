@@ -1,7 +1,7 @@
-Extract domain from given URL
+Extract domain name from given URL
 --
 
-Performant domain extraction. No regex or array magic.
+Performant domain name extraction. No regex or array magic.
 
 [What is an URL](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_URL)
 
