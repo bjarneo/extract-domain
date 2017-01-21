@@ -34,7 +34,7 @@ describe('extract domain', () => {
 
     it('should throw syntax error exception if the argument is not string nor array', () => {
         try {
-            extractDomain('{}');
+            extractDomain({});
         } catch (e) {
             assert.equal(e.name, 'TypeError');
 
