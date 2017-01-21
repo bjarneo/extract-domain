@@ -1,4 +1,4 @@
-Extract domain name from given URL
+Extract domain name from URL
 --
 
 Performant domain name extraction. No regex or array magic.
