@@ -18,7 +18,7 @@ function getDomainFromUrl(url) {
 
     // Find offset of the domain
     while (len-- && ++i) {
-        if (domainInc && url[i] === '/') {
+        if (domainInc && (url[i] === '/' || url[i] === ':')) {
             break;
         }
 
@@ -30,6 +30,8 @@ function getDomainFromUrl(url) {
 
         offsetDomain = i;
     }
+
+    offsetPath = i;
 
     i = offsetDomain;
 
@@ -45,38 +47,11 @@ function getDomainFromUrl(url) {
         break;
     }
 
-    i = offsetDomain;
-
-    // Get the offset path
-    while (i++) {
-        if (i >= url.length) {
-            break;
-        }
-
-        // If we hit the port, set the offsetPath and break the loop
-        if (url[i] === ':') {
-            offsetPath = i;
-
-            break;
-        }
-
-        // Continue until we find the start of a path
-        if (url[i] !== '/') {
-            continue;
-        }
-
-        offsetPath = i;
-
-        break;
-    }
-
     // offsetStartSlice should always be larger than protocol
     if (offsetStartSlice < 6) {
         return '';
     }
 
-    // It has been a wild ride
-    // .. slice
     // Tried several approaches slicing a string. Can't get it any faster than this.
     return url.slice(offsetStartSlice, offsetPath);
 }
