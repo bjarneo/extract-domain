@@ -16,19 +16,19 @@ const urls = [
 const expected = [ 'npmjs.com', 'example.com', 'npmjs.com', 'example.org' ];
 
 describe('extract domain', () => {
-    it('should extract given domain from string', () => {
+    it('should extract given domain from url', () => {
         assert.equal(extractDomain(urls[0]), expected[0]);
         assert.equal(extractDomain(urls[1]), expected[1]);
         assert.equal(extractDomain(urls[7]), expected[0]);
     });
 
-    it('should extract given domain from an array of strings', () => {
+    it('should extract given domain from an array of urls', () => {
         const domains = extractDomain(urls);
 
         domains.map(domain => assert(expected.indexOf(domain) > -1));
     });
 
-    it('should return empty string if it is not a domain', () => {
+    it('should return empty string if it is not a url', () => {
         assert.equal(extractDomain('/i.am/just.astring//7test'), '');
     });
 
