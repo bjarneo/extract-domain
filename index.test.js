@@ -10,7 +10,8 @@ const urls = [
     'http://www.so.many.sub.domains.example.com:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereInTheDocument',
     'http://user:password@example.com:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereInTheDocument',
     'ftp://example.org/resource.txt',
-    'http://www.npmjs.com'
+    'http://www.npmjs.com',
+    'http://www.npmjs.com?query=test'
 ];
 
 const expected = [ 'npmjs.com', 'example.com', 'npmjs.com', 'example.org' ];
@@ -20,6 +21,7 @@ describe('extract domain', () => {
         assert.equal(extractDomain(urls[0]), expected[0]);
         assert.equal(extractDomain(urls[1]), expected[1]);
         assert.equal(extractDomain(urls[7]), expected[0]);
+        assert.equal(extractDomain(urls[8]), expected[0]);
     });
 
     it('should extract given domain from an array of urls', () => {
