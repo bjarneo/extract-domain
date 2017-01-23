@@ -1,4 +1,4 @@
-const bench = require('nanobench')
+const bench = require('nanobench');
 const extractDomainDist = require('./dist/extract-domain.min').extractDomain;
 const extractDomain = require('./index');
 const url = 'https://www.npmjs.com/package/extract-domain';
@@ -21,7 +21,7 @@ function extractDomainRegEx(url) {
     return matches[1];
 }
 
-bench('extract domain dist 25.000.000 times', (b) => {
+bench('extract domain dist 25.000.000 times', b => {
     b.start();
 
     for (let i = 0; i < 25000000; i++) {
@@ -31,7 +31,7 @@ bench('extract domain dist 25.000.000 times', (b) => {
     b.end();
 });
 
-bench('extract domain 25.000.000 times', (b) => {
+bench('extract domain 25.000.000 times', b => {
     b.start();
 
     for (let i = 0; i < 25000000; i++) {
@@ -41,7 +41,7 @@ bench('extract domain 25.000.000 times', (b) => {
     b.end();
 });
 
-bench('extract domain regex 25.000.000 times', (b) => {
+bench('extract domain regex 25.000.000 times', b => {
     b.start();
 
     for (let i = 0; i < 25000000; i++) {
@@ -51,7 +51,7 @@ bench('extract domain regex 25.000.000 times', (b) => {
     b.end();
 });
 
-bench('extract domain array hack 25.000.000 times', (b) => {
+bench('extract domain array hack 25.000.000 times', b => {
     b.start();
 
     for (let i = 0; i < 25000000; i++) {
@@ -60,4 +60,3 @@ bench('extract domain array hack 25.000.000 times', (b) => {
 
     b.end();
 });
-
