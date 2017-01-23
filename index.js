@@ -18,7 +18,7 @@ function getDomainFromUrl(url) {
 
     // Find end offset of domain
     while (len-- && ++i) {
-        if (domainInc && (url[i] === '/' || url[i] === ':')) {
+        if (domainInc && (url[i] === '/' || url[i] === ':' || uri[i] === '?')) {
             break;
         }
 
