@@ -62,10 +62,16 @@ Coding style
 $ npm run pretty
 ```
 
+Benchmark
+--
+```bash
+$ npm run benchmark
+```
+
 Contribution
-------
+--
 Contributions are appreciated.
 
 License
-------
+--
 MIT-licensed. See LICENSE.
