@@ -1,5 +1,6 @@
 Extract domain name from URL
 --
+![Travis](https://travis-ci.org/bjarneo/extract-domain.svg?branch=master)
 
 Performant domain name extraction. No regex or array magic.
 

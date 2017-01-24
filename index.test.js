@@ -1,6 +1,13 @@
 'use strict';
 const assert = require('assert');
-const extractDomain = require('./index');
+
+let extractDomain;
+
+if (process.env.NODE_ENV === 'travis') {
+    extractDomain = require('./dist/extract-domain.min').extractDomain;
+} else {
+    extractDomain = require('./index');
+}
 
 const urls = [
     'https://www.npmjs.com/package/extract-domain',
