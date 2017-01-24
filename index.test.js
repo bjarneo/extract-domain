@@ -11,7 +11,8 @@ const urls = [
     'http://user:password@example.com:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereInTheDocument',
     'ftp://example.org/resource.txt',
     'http://www.npmjs.com',
-    'http://www.npmjs.com?query=test'
+    'http://www.npmjs.com?query=test',
+    'http://www.npmjs.com#fragment'
 ];
 
 const expected = [ 'npmjs.com', 'example.com', 'npmjs.com', 'example.org' ];
