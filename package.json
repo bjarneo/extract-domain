@@ -1,16 +1,20 @@
 {
   "name": "extract-domain",
-  "version": "1.1.4",
+  "version": "2.0.0",
   "description": "Extract domain name from URL",
   "main": "dist/extract-domain.min.js",
   "author": "Bjarne Oeverli",
   "license": "MIT",
   "scripts": {
-    "build": "npm run pretty && NODE_ENV=production webpack",
-    "watch": "webpack --watch",
+    "build": "npm run pretty && nanon",
     "test": "mocha -R spec index.test.js",
     "pretty": "prettier --tab-width=4 --print-width=100 --single-quote --trailing-coma  --write *.js *.js",
     "benchmark": "node benchmark.js"
+  },
+  "nanon": {
+    "input": "index.js",
+    "name": "extractDomain",
+    "output": "dist/extract-domain.min.js"
   },
   "repository": {
     "type": "git",
@@ -33,10 +37,9 @@
     "node"
   ],
   "devDependencies": {
-    "google-closure-compiler-js": "^20161201.0.0",
     "mocha": "^3.2.0",
     "nanobench": "^1.0.3",
-    "pretty": "^1.0.0",
-    "webpack": "^1.14.0"
+    "nanon": "^1.0.1",
+    "pretty": "^1.0.0"
   }
 }
