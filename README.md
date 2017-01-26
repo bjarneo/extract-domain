@@ -28,11 +28,11 @@ extractDomain(urls);
 
 ES6
 ```js
-import { extractDomain } from 'extract-domain';
+import extractDomain from 'extract-domain';
 ```
 
 ```js
-const extractDomain = require('extract-domain').extractDomain;
+const extractDomain = require('extract-domain');
 ```
 
 ```js

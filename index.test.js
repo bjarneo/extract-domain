@@ -4,7 +4,7 @@ const assert = require('assert');
 let extractDomain;
 
 if (process.env.NODE_ENV === 'travis') {
-    extractDomain = require('./dist/extract-domain.min').extractDomain;
+    extractDomain = require('./dist/extract-domain.min');
 } else {
     extractDomain = require('./index');
 }
