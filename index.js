@@ -2,8 +2,6 @@ function throwTypeError() {
     throw new TypeError('The given URL is not a string. Please verify your string|array.');
 }
 
-// Easy to read they said?
-// Function has to many lines they said?
 function getDomainFromUrl(url) {
     if (typeof url !== 'string') {
         throwTypeError();
