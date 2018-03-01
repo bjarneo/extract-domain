@@ -19,7 +19,7 @@ const urls = [
     'ftp://example.org/resource.txt',
     'http://www.npmjs.com',
     'http://www.npmjs.com?query=test',
-    'http://www.npmjs.com#fragment'
+    'http://www.npmjs.com#fragment',
 ];
 
 const expected = ['npmjs.com', 'example.com', 'npmjs.com', 'example.org'];
