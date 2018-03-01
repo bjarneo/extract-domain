@@ -22,7 +22,7 @@ const urls = [
     'http://www.npmjs.com#fragment'
 ];
 
-const expected = [ 'npmjs.com', 'example.com', 'npmjs.com', 'example.org' ];
+const expected = ['npmjs.com', 'example.com', 'npmjs.com', 'example.org'];
 
 describe('extract domain', () => {
     it('should extract given domain from url', () => {
@@ -57,7 +57,7 @@ describe('extract domain', () => {
 
     it('should throw syntax error exception if the array value is not a string', () => {
         try {
-            extractDomain([ [ 'wow' ] ]);
+            extractDomain([['wow']]);
         } catch (e) {
             assert.equal(e.name, 'TypeError');
 
