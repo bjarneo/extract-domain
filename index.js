@@ -1,21 +1,24 @@
+'use strict';
+
 function throwTypeError() {
     throw new TypeError('The given URL is not a string. Please verify your string|array.');
 }
+
+let domainInc = 0;
+let offsetDomain = 0;
+let offsetStartSlice = 0;
+let offsetPath = 0;
+let i = 0;
+
+const endings = ['/', ':', '?', '#'];
+const starters = ['.', '/', '@'];
 
 function getDomainFromUrl(url) {
     if (typeof url !== 'string') {
         throwTypeError();
     }
 
-    let domainInc = 0;
-    let offsetDomain = 0;
-    let offsetStartSlice = 0;
-    let offsetPath = 0;
     let len = url.length;
-    let i = 0;
-
-    const endings = ['/', ':', '?', '#'];
-    const starters = ['.', '/', '@'];
 
     // Find end offset of domain
     while (len-- && ++i) {
