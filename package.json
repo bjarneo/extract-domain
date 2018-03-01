@@ -1,6 +1,6 @@
 {
   "name": "extract-domain",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Extract domain name from URL",
   "main": "dist/extract-domain.min.js",
   "author": "Bjarne Oeverli",
@@ -8,7 +8,7 @@
   "scripts": {
     "build": "npm run pretty && nanon",
     "test": "mocha -R spec index.test.js",
-    "pretty": "prettier --tab-width=4 --print-width=100 --single-quote --trailing-coma  --write *.js *.js",
+    "pretty": "prettier --tab-width=4 --print-width=100 --single-quote --trailing-comma  --write *.js *.js",
     "benchmark": "node benchmark.js"
   },
   "nanon": {
