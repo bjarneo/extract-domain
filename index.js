@@ -14,9 +14,12 @@ function getDomainFromUrl(url) {
     let len = url.length;
     let i = 0;
 
+    const endings = ['/', ':', '?', '#'];
+    const starters = ['.', '/', '@'];
+
     // Find end offset of domain
     while (len-- && ++i) {
-        if (domainInc && (url[i] === '/' || url[i] === ':' || url[i] === '?' || url[i] === '#')) {
+        if (domainInc && endings.indexOf(url[i]) > -1) {
             break;
         }
 
@@ -36,7 +39,7 @@ function getDomainFromUrl(url) {
     // Find offset before domain name.
     while (i--) {
         // Look for sub domain, protocol or basic auth
-        if (url[i] !== '.' && url[i] !== '/' && url[i] !== '@') {
+        if (starters.indexOf(url[i]) === -1) {
             continue;
         }
 
