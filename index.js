@@ -1,3 +1,5 @@
+'use strict';
+
 function throwTypeError() {
     throw new TypeError('The given URL is not a string. Please verify your string|array.');
 }

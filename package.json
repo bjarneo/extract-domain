@@ -39,7 +39,7 @@
   "devDependencies": {
     "mocha": "^3.2.0",
     "nanobench": "^1.0.3",
-    "nanon": "^1.0.1",
+    "nanon": "^2.0.2",
     "prettier": "^1.11.1"
   }
 }
