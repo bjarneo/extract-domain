@@ -20,9 +20,10 @@ const urls = [
     'http://www.npmjs.com',
     'http://www.npmjs.com?query=test',
     'http://www.npmjs.com#fragment',
+    'this.is.my@email.com'
 ];
 
-const expected = ['npmjs.com', 'example.com', 'npmjs.com', 'example.org'];
+const expected = [ 'npmjs.com', 'example.com', 'npmjs.com', 'example.org', 'email.com'];
 
 describe('extract domain', () => {
     it('should extract given domain from url', () => {
@@ -30,6 +31,7 @@ describe('extract domain', () => {
         assert.equal(extractDomain(urls[1]), expected[1]);
         assert.equal(extractDomain(urls[7]), expected[0]);
         assert.equal(extractDomain(urls[8]), expected[0]);
+        assert.equal(extractDomain(urls[10]), expected[4]);
     });
 
     it('should extract given domain from an array of urls', () => {

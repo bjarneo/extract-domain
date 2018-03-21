@@ -41,13 +41,14 @@ const urls = [
     'http://www.example.com:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereInTheDocument',
     'http://user:password@example.com:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereInTheDocument',
     'https://npmjs.com/package/extract-domain',
-    'ftp://example.org/resource.txt'
+    'ftp://example.org/resource.txt',
+    'this.is.my@email.com'
 ];
 
 
 extractDomain(urls[0]); // npmjs.com
 
-extractDomain(urls); // [ 'npmjs.com', 'example.com', 'example.com', 'npmjs.com', 'example.org' ]
+extractDomain(urls); // [ 'npmjs.com', 'example.com', 'example.com', 'npmjs.com', 'example.org', 'email.com' ]
 
 ```
 
