@@ -3,7 +3,9 @@ const extractDomainDist = require('./dist/extract-domain.min');
 const extractDomain = require('./index');
 const url = 'https://www.npmjs.com/package/extract-domain';
 
-const TIMES = 2500000;
+const times = 2500000;
+
+const timesToLocale = times.toLocaleString();
 
 function extractDomainArray(url) {
     let domain;
@@ -23,40 +25,40 @@ function extractDomainRegEx(url) {
     return matches[1];
 }
 
-bench(`extract domain dist ${TIMES} times`, b => {
+bench(`extract domain dist ${timesToLocale} times`, b => {
     b.start();
 
-    for (let i = 0; i < TIMES; i++) {
+    for (let i = 0; i < times; i++) {
         extractDomainDist(url) === 'npmjs.com';
     }
 
     b.end();
 });
 
-bench(`extract domain ${TIMES} times`, b => {
+bench(`extract domain ${timesToLocale} times`, b => {
     b.start();
 
-    for (let i = 0; i < TIMES; i++) {
+    for (let i = 0; i < times; i++) {
         extractDomain(url) === 'npmjs.com';
     }
 
     b.end();
 });
 
-bench(`extract domain regex ${TIMES} times`, b => {
+bench(`extract domain regex ${timesToLocale} times`, b => {
     b.start();
 
-    for (let i = 0; i < TIMES; i++) {
+    for (let i = 0; i < times; i++) {
         extractDomainRegEx(url) === 'npmjs.com';
     }
 
     b.end();
 });
 
-bench(`extract domain array hack ${TIMES} times`, b => {
+bench(`extract domain array hack ${timesToLocale} times`, b => {
     b.start();
 
-    for (let i = 0; i < TIMES; i++) {
+    for (let i = 0; i < times; i++) {
         extractDomainArray(url) === 'npmjs.com';
     }
 
