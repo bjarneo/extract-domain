@@ -1,5 +1,6 @@
 Extract domain name from URL
 --
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4JDQMB6MRJXQE&source=url)
 ![Travis](https://travis-ci.org/bjarneo/extract-domain.svg?branch=master)
 
 Performant domain name extraction. No regex or array magic.
@@ -77,3 +78,9 @@ Contributions are appreciated.
 License
 --
 MIT-licensed. See LICENSE.
+
+Donation
+--
+If this project has been helpful in any way, and you want to treat me a cup of coffee, please donate :)
+
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4JDQMB6MRJXQE&source=url)
