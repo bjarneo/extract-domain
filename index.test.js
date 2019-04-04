@@ -20,10 +20,18 @@ const urls = [
     'http://www.npmjs.com',
     'http://www.npmjs.com?query=test',
     'http://www.npmjs.com#fragment',
-    'this.is.my@email.com'
+    'this.is.my@email.com',
+    'test@something.com',
 ];
 
-const expected = [ 'npmjs.com', 'example.com', 'npmjs.com', 'example.org', 'email.com'];
+const expected = [
+    'npmjs.com',
+    'example.com',
+    'npmjs.com',
+    'example.org',
+    'email.com',
+    'something.com',
+];
 
 describe('extract domain', () => {
     it('should extract given domain from url', () => {
