@@ -5,8 +5,7 @@ function throwTypeError() {
 }
 
 const endings = ['/', ':', '?', '#'];
-const starters = ['/', '@'];
-const www = 'www.';
+const starters = ['.', '/', '@'];
 
 function getDomainFromUrl(url) {
     if (typeof url !== 'string') {
@@ -57,13 +56,7 @@ function getDomainFromUrl(url) {
     }
 
     // Tried several approaches slicing a string. Can't get it any faster than this.
-    const slicedUrl = url.slice(offsetStartSlice, offsetPath);
-
-    if (slicedUrl.substring(0, 4) === www) {
-        return slicedUrl.slice(www.length, offsetPath);
-    }
-
-    return slicedUrl;
+    return url.slice(offsetStartSlice, offsetPath);
 }
 
 module.exports = function extractDomain(urls) {

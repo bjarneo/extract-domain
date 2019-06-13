@@ -22,10 +22,6 @@ const urls = [
     'http://www.npmjs.com#fragment',
     'this.is.my@email.com',
     'test@something.com',
-    'email@tld.co.uk',
-    'https://www.tld.co.uk',
-    'https://tld.co.uk',
-    'http://user:password@tld.co.uk:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereInTheDocument',
 ];
 
 const expected = [
@@ -35,8 +31,6 @@ const expected = [
     'example.org',
     'email.com',
     'something.com',
-    'tld.co.uk',
-    'so.many.sub.domains.example.com',
 ];
 
 describe('extract domain', () => {
@@ -46,11 +40,11 @@ describe('extract domain', () => {
         assert.equal(extractDomain(urls[7]), expected[0]);
         assert.equal(extractDomain(urls[8]), expected[0]);
         assert.equal(extractDomain(urls[10]), expected[4]);
-        assert.equal(extractDomain(urls[12]), expected[6]);
     });
 
     it('should extract given domain from an array of urls', () => {
         const domains = extractDomain(urls);
+
         domains.map(domain => assert(expected.indexOf(domain) > -1));
     });
 
@@ -82,12 +76,5 @@ describe('extract domain', () => {
                 'The given URL is not a string. Please verify your string|array.'
             );
         }
-    });
-
-    it('should support second level domains', () => {
-        assert.equal(extractDomain(urls[12]), expected[6]);
-        assert.equal(extractDomain(urls[13]), expected[6]);
-        assert.equal(extractDomain(urls[14]), expected[6]);
-        assert.equal(extractDomain(urls[15]), expected[6]);
     });
 });
