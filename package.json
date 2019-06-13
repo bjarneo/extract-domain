@@ -1,6 +1,6 @@
 {
   "name": "extract-domain",
-  "version": "2.0.6",
+  "version": "2.1.0",
   "description": "Extract domain name from URL",
   "main": "dist/extract-domain.min.js",
   "author": "Bjarne Oeverli",
@@ -34,7 +34,8 @@
     "string",
     "url",
     "browser",
-    "node"
+    "node",
+    "second level"
   ],
   "devDependencies": {
     "mocha": "^3.2.0",
