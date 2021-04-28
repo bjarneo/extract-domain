@@ -4,7 +4,7 @@ const assert = require('assert');
 let extractDomain;
 
 if (process.env.NODE_ENV === 'travis') {
-    extractDomain = require('./dist/extract-domain.min');
+    extractDomain = require('./dist/extract-domain');
 } else {
     extractDomain = require('./index');
 }
@@ -35,11 +35,11 @@ const expected = [
 
 describe('extract domain', () => {
     it('should extract given domain from url', () => {
-        assert.equal(extractDomain(urls[0]), expected[0]);
-        assert.equal(extractDomain(urls[1]), expected[1]);
-        assert.equal(extractDomain(urls[7]), expected[0]);
-        assert.equal(extractDomain(urls[8]), expected[0]);
-        assert.equal(extractDomain(urls[10]), expected[4]);
+        assert.strictEqual(extractDomain(urls[0]), expected[0]);
+        assert.strictEqual(extractDomain(urls[1]), expected[1]);
+        assert.strictEqual(extractDomain(urls[7]), expected[0]);
+        assert.strictEqual(extractDomain(urls[8]), expected[0]);
+        assert.strictEqual(extractDomain(urls[10]), expected[4]);
     });
 
     it('should extract given domain from an array of urls', () => {
@@ -49,16 +49,16 @@ describe('extract domain', () => {
     });
 
     it('should return empty string if it is not a url', () => {
-        assert.equal(extractDomain('/i.am/just.astring//7test'), '');
+        assert.strictEqual(extractDomain('/i.am/just.astring//7test'), '');
     });
 
     it('should throw syntax error exception if the argument is not string nor array', () => {
         try {
             extractDomain({});
         } catch (e) {
-            assert.equal(e.name, 'TypeError');
+            assert.strictEqual(e.name, 'TypeError');
 
-            assert.equal(
+            assert.strictEqual(
                 e.message,
                 'The given URL is not a string. Please verify your string|array.'
             );
@@ -69,12 +69,38 @@ describe('extract domain', () => {
         try {
             extractDomain([['wow']]);
         } catch (e) {
-            assert.equal(e.name, 'TypeError');
+            assert.strictEqual(e.name, 'TypeError');
 
-            assert.equal(
+            assert.strictEqual(
                 e.message,
                 'The given URL is not a string. Please verify your string|array.'
             );
         }
+    });
+
+    it('should support tld if options flag is used', () => {
+        assert.strictEqual(
+            extractDomain(
+                'http://www.so.many.sub.domains.example.co.uk:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereInTheDocument',
+                { tld: true }
+            ),
+            'example.co.uk'
+        );
+
+        assert.strictEqual(
+            extractDomain(
+                'http://user:password@www.so.many.sub.domains.example.co.uk:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereInTheDocument',
+                { tld: true }
+            ),
+            'example.co.uk'
+        );
+
+        assert.strictEqual(
+            extractDomain(
+                'http://user:password@www.so.many.sub.domains.example.com:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereInTheDocument',
+                { tld: true }
+            ),
+            'example.com'
+        );
     });
 });

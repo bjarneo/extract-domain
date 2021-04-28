@@ -1,5 +1,3 @@
-'use strict';
-
 function throwTypeError() {
     throw new TypeError('The given URL is not a string. Please verify your string|array.');
 }
@@ -7,7 +5,7 @@ function throwTypeError() {
 const endings = ['/', ':', '?', '#'];
 const starters = ['.', '/', '@'];
 
-function getDomainFromUrl(url) {
+function getDomainFromUrl(url, opts) {
     if (typeof url !== 'string') {
         throwTypeError();
     }
@@ -55,19 +53,38 @@ function getDomainFromUrl(url) {
         return '';
     }
 
+    // Very customized if statement for tlds
+    if (opts.tld) {
+        let offsetStart = 0;
+        const starters = ['/', '@'];
+
+        while (i--) {
+            if (starters.indexOf(url[i]) > -1) {
+                offsetStart = i + 1;
+
+                break;
+            }
+        }
+
+        const psl = require('psl');
+
+        return psl.get(url.slice(offsetStart, offsetPath));
+    }
+
     // Tried several approaches slicing a string. Can't get it any faster than this.
     return url.slice(offsetStartSlice, offsetPath);
 }
 
-module.exports = function extractDomain(urls) {
+module.exports = function extractDomain(urls, opts = {}) {
     if (typeof urls === 'string') {
-        return getDomainFromUrl(urls);
+        return getDomainFromUrl(urls, opts);
     } else if (Array.isArray(urls)) {
         const extractedUrls = [];
-        let len;
+        const len = urls.length;
+        let i = 0;
 
-        for (let i = 0, len = urls.length; i < len; i++) {
-            extractedUrls.push(getDomainFromUrl(urls[i]));
+        for (; i < len; i++) {
+            extractedUrls.push(getDomainFromUrl(urls[i], opts));
         }
 
         return extractedUrls;

@@ -53,6 +53,22 @@ extractDomain(urls); // [ 'npmjs.com', 'example.com', 'example.com', 'npmjs.com'
 
 ```
 
+TLD support
+--
+```js
+const url = 'http://www.example.co.uk:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereInTheDocument';
+
+extractDomain(url, { tld: true });
+// example.co.uk
+```
+However, using the tld flag will slow down the process by many seconds. Benchmark:
+```
+# extract domain 10,000 times
+  end ~14 ms (0 s + 13572914 ns)
+# extract domain with tld 10,000 times
+  end ~4.29 s (4 s + 288108681 ns)
+```
+
 Tests
 --
 ```bash
