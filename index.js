@@ -5,8 +5,6 @@ function throwTypeError() {
 const endings = ['/', ':', '?', '#'];
 const starters = ['.', '/', '@'];
 
-getDomainFromUrl('test', {});
-
 /**
  * Options to extract domain.
  * @typedef {({tld: boolean})} GetDomainOptions
