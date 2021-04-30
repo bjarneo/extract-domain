@@ -1,5 +1,5 @@
 Extract domain name from URL
---
+==
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4JDQMB6MRJXQE&source=url)
 ![Travis](https://travis-ci.org/bjarneo/extract-domain.svg?branch=master)
 
@@ -55,6 +55,9 @@ extractDomain(urls); // [ 'npmjs.com', 'example.com', 'example.com', 'npmjs.com'
 
 TLD support
 --
+
+TLD support require optional dependency to [`psl` library](https://www.npmjs.com/package/psl).
+
 ```js
 const url = 'http://www.example.co.uk:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereInTheDocument';
 
