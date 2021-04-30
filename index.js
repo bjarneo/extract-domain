@@ -66,7 +66,13 @@ function getDomainFromUrl(url, opts) {
             }
         }
 
-        const psl = require('psl');
+        try {
+            const psl = require('psl');
+        } catch (_e) {
+            throw Error(
+                'You must install psl library (https://www.npmjs.com/package/psl) to use `tld` option'
+            );
+        }
 
         return psl.get(url.slice(offsetStart, offsetPath));
     }

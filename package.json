@@ -2,7 +2,7 @@
   "name": "extract-domain",
   "version": "2.3.0",
   "description": "Extract domain name from URL",
-    "source": "index.js",
+  "source": "index.js",
   "main": "dist/extract-domain.js",
   "exports": "./dist/extract-domain.modern.js",
   "module": "dist/extract-domain.module.js",
@@ -41,7 +41,7 @@
     "nanobench": "^1.0.3",
     "prettier": "^1.11.1"
   },
-  "dependencies": {
+  "optionalDependencies": {
     "psl": "^1.8.0"
   }
 }
