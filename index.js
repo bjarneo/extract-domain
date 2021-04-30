@@ -5,6 +5,17 @@ function throwTypeError() {
 const endings = ['/', ':', '?', '#'];
 const starters = ['.', '/', '@'];
 
+/**
+ * Options to extract domain.
+ * @typedef {({tld: boolean})} GetDomainOptions
+ */
+
+/**
+ * @param {string} url
+ * @param {GetDomainOptions} opts
+ *  - `tld` permit to get Top Level Domain like `*.co.uk`
+ * @returns {string}
+ */
 function getDomainFromUrl(url, opts) {
     if (typeof url !== 'string') {
         throwTypeError();
@@ -81,6 +92,12 @@ function getDomainFromUrl(url, opts) {
     return url.slice(offsetStartSlice, offsetPath);
 }
 
+/**
+ * @param {string} url
+ * @param {GetDomainOptions} opts
+ *  - `tld` permit to get Top Level Domain like `*.co.uk`
+ * @returns {string}
+ */
 module.exports = function extractDomain(urls, opts = {}) {
     if (typeof urls === 'string') {
         return getDomainFromUrl(urls, opts);
