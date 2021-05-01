@@ -1,11 +1,9 @@
 function throwTypeError() {
-    throw new TypeError(
-        "The given URL is not a string. Please verify your string|array."
-    );
+    throw new TypeError('The given URL is not a string. Please verify your string|array.');
 }
 
-const endings = ["/", ":", "?", "#"];
-const starters = [".", "/", "@"];
+const endings = ['/', ':', '?', '#'];
+const starters = ['.', '/', '@'];
 
 /**
  * Options to extract domain.
@@ -19,7 +17,7 @@ const starters = [".", "/", "@"];
  * @returns {string}
  */
 function getDomainFromUrl(url, opts) {
-    if (typeof url !== "string") {
+    if (typeof url !== 'string') {
         throwTypeError();
     }
 
@@ -36,7 +34,7 @@ function getDomainFromUrl(url, opts) {
             break;
         }
 
-        if (url[i] !== ".") {
+        if (url[i] !== '.') {
             continue;
         }
 
@@ -63,13 +61,13 @@ function getDomainFromUrl(url, opts) {
 
     // offsetStartSlice should always be larger than protocol
     if (offsetStartSlice < 2) {
-        return "";
+        return '';
     }
 
     // Very customized if statement for tlds
     if (opts.tld) {
         let offsetStart = 0;
-        const starters = ["/", "@"];
+        const starters = ['/', '@'];
 
         while (i--) {
             if (starters.indexOf(url[i]) > -1) {
@@ -80,12 +78,12 @@ function getDomainFromUrl(url, opts) {
         }
 
         try {
-            const psl = require("psl");
+            const psl = require('psl');
 
             return psl.get(url.slice(offsetStart, offsetPath));
         } catch (_e) {
             throw Error(
-                "You must install psl library (https://www.npmjs.com/package/psl) to use `tld` option"
+                'You must install psl library (https://www.npmjs.com/package/psl) to use `tld` option'
             );
         }
     }
@@ -101,7 +99,7 @@ function getDomainFromUrl(url, opts) {
  * @returns {string}
  */
 module.exports = function extractDomain(urls, opts = {}) {
-    if (typeof urls === "string") {
+    if (typeof urls === 'string') {
         return getDomainFromUrl(urls, opts);
     } else if (Array.isArray(urls)) {
         const extractedUrls = [];
