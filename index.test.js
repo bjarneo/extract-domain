@@ -102,5 +102,7 @@ describe('extract domain', () => {
             ),
             'example.com'
         );
+
+        assert.strictEqual(extractDomain('https://example.com', { tld: true }), 'example.com');
     });
 });

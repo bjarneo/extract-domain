@@ -68,6 +68,7 @@ function getDomainFromUrl(url, opts) {
     if (opts.tld) {
         let offsetStart = 0;
         const starters = ['/', '@'];
+        let i = offsetDomain;
 
         while (i--) {
             if (starters.indexOf(url[i]) > -1) {
