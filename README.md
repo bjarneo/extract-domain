@@ -7,7 +7,7 @@ Performant domain name extraction. No regex or array magic.
 
 [What is an URL](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_URL)
 
-However. This package will also remove the sub domain.
+However. This package will also remove the sub domain, and unless the TLD option is used, anything other than the domain and second level domain (so www.example.co.uk would return co.uk)
 
 ## Supports
 
@@ -43,12 +43,13 @@ const urls = [
     "http://user:password@example.com:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereInTheDocument",
     "https://npmjs.com/package/extract-domain",
     "ftp://example.org/resource.txt",
+    "http://example.co.uk/",
     "this.is.my@email.com"
 ];
 
 extractDomain(urls[0]); // npmjs.com
 
-extractDomain(urls); // [ 'npmjs.com', 'example.com', 'example.com', 'npmjs.com', 'example.org', 'email.com' ]
+extractDomain(urls); // [ 'npmjs.com', 'example.com', 'example.com', 'npmjs.com', 'example.org', 'co.uk', 'email.com' ]
 ```
 
 ## TLD support
