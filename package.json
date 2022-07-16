@@ -1,6 +1,6 @@
 {
   "name": "extract-domain",
-  "version": "2.4.3",
+  "version": "2.4.4",
   "description": "Extract domain name from URL",
   "source": "index.js",
   "main": "dist/extract-domain.js",
