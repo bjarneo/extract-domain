@@ -3,10 +3,10 @@ const assert = require('assert');
 
 let extractDomain;
 
-if (process.env.NODE_ENV === 'travis') {
-    extractDomain = require('./dist/extract-domain');
+if (process.env.NODE_ENV === 'CI') {
+    extractDomain = require('../dist/extract-domain');
 } else {
-    extractDomain = require('./index');
+    extractDomain = require('../index');
 }
 
 const urls = [

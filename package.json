@@ -5,14 +5,8 @@
   "source": "index.js",
   "main": "dist/extract-domain.js",
   "exports": {
-    ".": {
-      "node": {
-        "module": "./dist/extract-domain.module.js",
-        "require": "./dist/extract-domain.js",
-        "import": "./dist/extract-domain.modern.js"
-      },
-      "default": "./dist/extract-domain.js"
-    },
+    "require": "./dist/extract-domain.js",
+    "default": "./dist/extract-domain.modern.mjs",
     "./package.json": "./package.json"
   },
   "module": "dist/extract-domain.module.js",
@@ -20,8 +14,8 @@
   "author": "Bjarne Oeverli",
   "license": "MIT",
   "scripts": {
-    "build": "npm run pretty && microbundle",
-    "test": "mocha -R spec index.test.js",
+    "build": "npm run pretty && microbundle -i extractDomain index.js",
+    "test": "mocha -R spec tests/",
     "pretty": "prettier --tab-width=4 --print-width=100 --single-quote --trailing-comma=es5 --write *.js *.js",
     "benchmark": "node benchmark.js"
   },
@@ -46,12 +40,14 @@
     "node"
   ],
   "devDependencies": {
-    "microbundle": "^0.13.0",
     "mocha": "^8.3.2",
     "nanobench": "^1.0.3",
     "prettier": "^1.11.1"
   },
   "optionalDependencies": {
     "psl": "^1.8.0"
+  },
+  "dependencies": {
+    "microbundle": "^0.15.0"
   }
 }

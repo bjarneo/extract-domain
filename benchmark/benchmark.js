@@ -1,6 +1,6 @@
 const bench = require('nanobench');
 const extractDomainDist = require('./dist/extract-domain');
-const extractDomain = require('./index');
+const extractDomain = require('../index');
 const url = 'https://www.npmjs.com/package/extract-domain';
 
 const times = 10000;
@@ -25,7 +25,7 @@ function extractDomainRegEx(url) {
     return matches[1];
 }
 
-bench(`extract domain dist ${timesToLocale} times`, b => {
+bench(`extract domain dist ${timesToLocale} times`, (b) => {
     b.start();
 
     for (let i = 0; i < times; i++) {
@@ -35,7 +35,7 @@ bench(`extract domain dist ${timesToLocale} times`, b => {
     b.end();
 });
 
-bench(`extract domain ${timesToLocale} times`, b => {
+bench(`extract domain ${timesToLocale} times`, (b) => {
     b.start();
 
     for (let i = 0; i < times; i++) {
@@ -45,7 +45,7 @@ bench(`extract domain ${timesToLocale} times`, b => {
     b.end();
 });
 
-bench(`extract domain with tld ${timesToLocale} times`, b => {
+bench(`extract domain with tld ${timesToLocale} times`, (b) => {
     b.start();
 
     for (let i = 0; i < times; i++) {
@@ -55,7 +55,7 @@ bench(`extract domain with tld ${timesToLocale} times`, b => {
     b.end();
 });
 
-bench(`extract domain regex ${timesToLocale} times`, b => {
+bench(`extract domain regex ${timesToLocale} times`, (b) => {
     b.start();
 
     for (let i = 0; i < times; i++) {
@@ -65,7 +65,7 @@ bench(`extract domain regex ${timesToLocale} times`, b => {
     b.end();
 });
 
-bench(`extract domain array hack ${timesToLocale} times`, b => {
+bench(`extract domain array hack ${timesToLocale} times`, (b) => {
     b.start();
 
     for (let i = 0; i < times; i++) {
