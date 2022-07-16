@@ -59,8 +59,11 @@ function getDomainFromUrl(url, opts) {
         break;
     }
 
-    // offsetStartSlice should always be larger than protocol
-    if (offsetStartSlice < 2) {
+    if (offsetStartSlice === 0 && offsetPath > 3) {
+        return url;
+    }
+
+    if (offsetStartSlice > 0 && offsetStartSlice < 2) {
         return '';
     }
 
