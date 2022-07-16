@@ -1,13 +1,6 @@
-'use strict';
-const assert = require('assert');
+import assert from 'assert';
 
-let extractDomain;
-
-if (process.env.NODE_ENV === 'CI') {
-    extractDomain = require('../dist/extract-domain');
-} else {
-    extractDomain = require('../index');
-}
+import extractDomain from '../index.js';
 
 const urls = [
     'https://www.npmjs.com/package/extract-domain',

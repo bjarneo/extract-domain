@@ -102,7 +102,7 @@ function getDomainFromUrl(url, opts) {
  *  - `tld` permit to get Top Level Domain like `*.co.uk`
  * @returns {string}
  */
-module.exports = function extractDomain(urls, opts = {}) {
+export default function extractDomain(urls, opts = {}) {
     if (typeof urls === 'string') {
         return getDomainFromUrl(urls, opts);
     } else if (Array.isArray(urls)) {
@@ -118,4 +118,4 @@ module.exports = function extractDomain(urls, opts = {}) {
     } else {
         throwTypeError();
     }
-};
+}
