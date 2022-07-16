@@ -1,6 +1,6 @@
-import assert from 'assert';
+const assert = require('assert');
 
-import extractDomain from '../index.js';
+const extractDomain = require('../dist/extract-domain.module.js');
 
 const urls = [
     'https://www.npmjs.com/package/extract-domain',
