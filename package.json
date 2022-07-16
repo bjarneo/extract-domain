@@ -1,13 +1,12 @@
 {
   "name": "extract-domain",
-  "version": "2.4.5",
+  "version": "2.4.6",
   "description": "Extract domain name from URL",
   "source": "index.js",
   "main": "dist/extract-domain.js",
   "exports": {
     "require": "./dist/extract-domain.js",
-    "default": "./dist/extract-domain.modern.mjs",
-    "./package.json": "./package.json"
+    "default": "./dist/extract-domain.modern.mjs"
   },
   "module": "dist/extract-domain.module.js",
   "unpkg": "dist/extract-domain.umd.js",
