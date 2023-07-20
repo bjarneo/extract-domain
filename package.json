@@ -40,7 +40,7 @@
   ],
   "devDependencies": {
     "microbundle": "^0.15.1",
-    "mocha": "^8.3.2",
+    "mocha": "^10.2.0",
     "nanobench": "^1.0.3",
     "prettier": "^1.11.1"
   },
