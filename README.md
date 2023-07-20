@@ -29,22 +29,22 @@ extractDomain(urls);
 ES6
 
 ```js
-import extractDomain from "extract-domain";
+import extractDomain from 'extract-domain';
 ```
 
 ```js
-const extractDomain = require("extract-domain");
+const extractDomain = require('extract-domain');
 ```
 
 ```js
 const urls = [
-    "https://www.npmjs.com/package/extract-domain",
-    "http://www.example.com:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereInTheDocument",
-    "http://user:password@example.com:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereInTheDocument",
-    "https://npmjs.com/package/extract-domain",
-    "ftp://example.org/resource.txt",
-    "http://example.co.uk/",
-    "this.is.my@email.com"
+    'https://www.npmjs.com/package/extract-domain',
+    'http://www.example.com:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereInTheDocument',
+    'http://user:password@example.com:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereInTheDocument',
+    'https://npmjs.com/package/extract-domain',
+    'ftp://example.org/resource.txt',
+    'http://example.co.uk/',
+    'this.is.my@email.com',
 ];
 
 extractDomain(urls[0]); // npmjs.com
@@ -56,11 +56,25 @@ extractDomain(urls); // [ 'npmjs.com', 'example.com', 'example.com', 'npmjs.com'
 
 TLD support require optional dependency to [`psl` library](https://www.npmjs.com/package/psl).
 
+To use the code with the PSL support, you have to wrap in in either an async function, or use it is a promise.
+
+Examples
+
+```bash
+npm i --save-optional psl
+```
+
 ```js
 const url =
-    "http://www.example.co.uk:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereInTheDocument";
+    'http://www.example.co.uk:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereInTheDocument';
 
-extractDomain(url, { tld: true });
+async function extract(url) {
+    console.log(await extractDomain(url, { tld: true }));
+    // example.co.uk
+}
+
+// Or
+extractDomain(url, { tld: true }).then(console.log);
 // example.co.uk
 ```
 

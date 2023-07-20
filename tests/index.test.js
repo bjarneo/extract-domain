@@ -1,6 +1,5 @@
-const assert = require('assert');
-
-const extractDomain = require('../dist/extract-domain.module.js');
+import assert from 'assert';
+import extractDomain from '../dist/extract-domain.module.js';
 
 const urls = [
     'https://www.npmjs.com/package/extract-domain',
@@ -78,9 +77,9 @@ describe('extract domain', () => {
         }
     });
 
-    it('should support tld if options flag is used', () => {
+    it('should support tld if options flag is used', async () => {
         assert.strictEqual(
-            extractDomain(
+            await extractDomain(
                 'http://www.so.many.sub.domains.example.co.uk:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereInTheDocument',
                 { tld: true }
             ),
@@ -88,7 +87,7 @@ describe('extract domain', () => {
         );
 
         assert.strictEqual(
-            extractDomain(
+            await extractDomain(
                 'http://user:password@www.so.many.sub.domains.example.co.uk:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereInTheDocument',
                 { tld: true }
             ),
@@ -96,14 +95,17 @@ describe('extract domain', () => {
         );
 
         assert.strictEqual(
-            extractDomain(
+            await extractDomain(
                 'http://user:password@www.so.many.sub.domains.example.com:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereInTheDocument',
                 { tld: true }
             ),
             'example.com'
         );
 
-        assert.strictEqual(extractDomain('https://example.com', { tld: true }), 'example.com');
+        assert.strictEqual(
+            await extractDomain('https://example.com', { tld: true }),
+            'example.com'
+        );
     });
 
     it('should not support tld if options flag is used with false value', () => {
