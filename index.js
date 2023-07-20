@@ -82,10 +82,12 @@ function getDomainFromUrl(url, opts) {
         }
 
         try {
-            const psl = require('psl');
+            return import('psl')
+                .then((psl) => Promise.resolve(psl.get(url.slice(offsetStart, offsetPath))))
+                .catch(console.error);
+        } catch (error) {
+            console.error(error);
 
-            return psl.get(url.slice(offsetStart, offsetPath));
-        } catch (_e) {
             throw Error(
                 'You must install psl library (https://www.npmjs.com/package/psl) to use `tld` option'
             );
