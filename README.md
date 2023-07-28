@@ -1,41 +1,43 @@
 # Extract domain name from URL
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4JDQMB6MRJXQE&source=url)
-![Travis](https://travis-ci.org/bjarneo/extract-domain.svg?branch=master)
 
-Performant domain name extraction. No regex or array magic.
+This package provides a performant way to extract domain names from URLs without using regular expressions or array manipulations.
 
-[What is an URL](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_URL)
+Learn more about [What is a URL](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_URL)
 
-However. This package will also remove the sub domain, and unless the TLD option is used, anything other than the domain and second level domain (so www.example.co.uk would return co.uk)
 
 ## Supports
 
-Browser and Node.
+Both the browser and nodejs.
 
 ## Usage
 
+### Installation
 ```bash
 $ npm i --save extract-domain
 ```
 
--   urls = string|array
--   returns string|array
+### API
+- urls: A string or an array of URLs.
+- options { tld: true }: If it should take TLD domains to consideration (i.e. .co.uk)
+- returns: A string representing the extracted domain name or an array of domain names.
 
 ```js
-extractDomain(urls);
+extractDomain(urls, options);
 ```
 
-ES6
-
+ES6 Import
 ```js
 import extractDomain from 'extract-domain';
 ```
 
+CommonJS Require
 ```js
 const extractDomain = require('extract-domain');
 ```
 
+Examples
 ```js
 const urls = [
     'https://www.npmjs.com/package/extract-domain',
@@ -54,9 +56,9 @@ extractDomain(urls); // [ 'npmjs.com', 'example.com', 'example.com', 'npmjs.com'
 
 ## TLD support
 
-TLD support require optional dependency to [`psl` library](https://www.npmjs.com/package/psl).
+TLD support requires the optional dependency of the [`psl` library](https://www.npmjs.com/package/psl).
 
-To use the code with the PSL support, you have to wrap in in either an async function, or use it is a promise.
+To use the code with the PSL support, you have to wrap it in either an async function or use it as a promise.
 
 Examples
 
@@ -78,7 +80,7 @@ extractDomain(url, { tld: true }).then(console.log);
 // example.co.uk
 ```
 
-However, using the tld flag will slow down the process by many seconds. Benchmark:
+Please note that using the tld flag may significantly slow down the process. Benchmark results:
 
 ```
 # extract domain 10,000 times
