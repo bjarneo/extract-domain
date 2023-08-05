@@ -17,7 +17,7 @@
     "build": "npm run pretty && microbundle -i extractDomain -f modern,esm,cjs --external psl index.ts",
     "test": "mocha -R spec tests/",
     "pretty": "prettier --tab-width=4 --print-width=100 --single-quote --trailing-comma=es5 --write *.ts *.ts",
-    "benchmark": "node benchmark.js"
+    "benchmark": "node benchmark/benchmark.js"
   },
   "repository": {
     "type": "git",

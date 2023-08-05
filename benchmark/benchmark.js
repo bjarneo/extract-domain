@@ -1,9 +1,8 @@
-const bench = require('nanobench');
-const extractDomainDist = require('./dist/extract-domain');
-const extractDomain = require('../index');
+import bench from 'nanobench';
+import extractDomain from '../dist/extract-domain.module.js';
 const url = 'https://www.npmjs.com/package/extract-domain';
 
-const times = 10000;
+const times = 100000;
 
 const timesToLocale = times.toLocaleString();
 
@@ -26,16 +25,6 @@ function extractDomainRegEx(url) {
 }
 
 bench(`extract domain dist ${timesToLocale} times`, (b) => {
-    b.start();
-
-    for (let i = 0; i < times; i++) {
-        extractDomainDist(url) === 'npmjs.com';
-    }
-
-    b.end();
-});
-
-bench(`extract domain ${timesToLocale} times`, (b) => {
     b.start();
 
     for (let i = 0; i < times; i++) {
