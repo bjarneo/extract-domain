@@ -20,12 +20,9 @@ $ npm i --save extract-domain
 
 ### API
 
-/\*\*
-
 -   @param {Urls} urls ["https://www.google.com", "https://www.github.com"] or "https://www.google.com"
 -   @param {GetDomainOptions} opts `{ tld: true }` permit to get Top Level Domain like `*.co.uk`
 -   @returns {Urls | Promise<Urls>} Returns URL(s) or a promise of URL(s) if the PSL lib is being used
-    \*/
 
 ```js
 const res = extractDomain(urls, options);
