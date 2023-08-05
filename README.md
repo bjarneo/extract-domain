@@ -6,7 +6,6 @@ This package provides a performant way to extract domain names from URLs without
 
 Learn more about [What is a URL](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_URL)
 
-
 ## Supports
 
 Both the browser and nodejs.
@@ -14,30 +13,38 @@ Both the browser and nodejs.
 ## Usage
 
 ### Installation
+
 ```bash
 $ npm i --save extract-domain
 ```
 
 ### API
-- urls: A string or an array of URLs.
-- options { tld: true }: If it should take TLD domains to consideration (i.e. .co.uk)
-- returns: A string representing the extracted domain name or an array of domain names.
+
+/\*\*
+
+-   @param {Urls} urls ["https://www.google.com", "https://www.github.com"] or "https://www.google.com"
+-   @param {GetDomainOptions} opts `{ tld: true }` permit to get Top Level Domain like `*.co.uk`
+-   @returns {Urls | Promise<Urls>} Returns URL(s) or a promise of URL(s) if the PSL lib is being used
+    \*/
 
 ```js
-extractDomain(urls, options);
+const res = extractDomain(urls, options);
 ```
 
 ES6 Import
+
 ```js
 import extractDomain from 'extract-domain';
 ```
 
 CommonJS Require
+
 ```js
 const extractDomain = require('extract-domain');
 ```
 
 Examples
+
 ```js
 const urls = [
     'https://www.npmjs.com/package/extract-domain',
@@ -57,8 +64,6 @@ extractDomain(urls); // [ 'npmjs.com', 'example.com', 'example.com', 'npmjs.com'
 ## TLD support
 
 TLD support requires the optional dependency of the [`psl` library](https://www.npmjs.com/package/psl).
-
-To use the code with the PSL support, you have to wrap it in either an async function or use it as a promise.
 
 Examples
 
@@ -80,7 +85,7 @@ extractDomain(url, { tld: true }).then(console.log);
 // example.co.uk
 ```
 
-Please note that using the tld flag may significantly slow down the process. Benchmark results:
+Please note that using the tld flag may significantly slow down the process. Benchmark (old) results:
 
 ```
 # extract domain 10,000 times
