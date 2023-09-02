@@ -7,7 +7,8 @@ const starters = ['.', '/', '@'];
 
 type Url = string;
 type Urls = string | Array<string>;
-type ReturnUrls = Url | Array<Url> | Promise<Url> | Array<Promise<Url>>;
+type ReturnUrls = Array<Url> | Array<Promise<Url>>;
+type ReturnUrl = Url | Promise<Url>;
 
 /**
  * Options to extract domain.
@@ -19,9 +20,9 @@ type GetDomainOptions = {
 /**
  * @param {Url} url
  * @param {GetDomainOptions} opts `{ tld: true }` permit to get Top Level Domain like `*.co.uk`
- * @returns {Url | Promise<Url>} Returns a URL or a promise of a URL if the PSL lib is being used
+ * @returns {ReturnUrl} Returns a URL or a promise of a URL if the PSL lib is being used
  */
-function getDomainFromUrl(url: Url, opts: GetDomainOptions): Url | Promise<Url> {
+function getDomainFromUrl(url: Url, opts: GetDomainOptions): ReturnUrl {
     let domainInc: number = 0;
     let offsetDomain: number = 0;
     let offsetStartSlice: number = 0;
@@ -102,7 +103,10 @@ function getDomainFromUrl(url: Url, opts: GetDomainOptions): Url | Promise<Url> 
  * @param {GetDomainOptions} opts `{ tld: true }` permit to get Top Level Domain like `*.co.uk`
  * @returns {Urls | Promise<Urls>} Return URLs or a promise of URLs if the PSL lib is being used
  */
-export default function extractDomain(urls: Urls, opts: GetDomainOptions = {}): ReturnUrls {
+export default function extractDomain(
+    urls: Urls,
+    opts: GetDomainOptions = {}
+): ReturnUrls | ReturnUrl {
     if (typeof urls === 'string') {
         return getDomainFromUrl(urls, opts);
     } else if (Array.isArray(urls)) {
