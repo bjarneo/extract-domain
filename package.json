@@ -1,6 +1,6 @@
 {
   "name": "extract-domain",
-  "version": "4.1.2",
+  "version": "4.1.3",
   "description": "Extract domain name from URL",
   "type": "module",
   "source": "index.ts",
@@ -14,7 +14,7 @@
   "author": "Bjarne Oeverli",
   "license": "MIT",
   "scripts": {
-    "build": "npm run pretty && microbundle -i extractDomain -f modern,esm,cjs --extrenal psl index.ts",
+    "build": "npm run pretty && microbundle -i extractDomain -f modern,esm,cjs index.ts",
     "test": "mocha -R spec tests/",
     "pretty": "prettier --tab-width=4 --print-width=100 --single-quote --trailing-comma=es5 --write *.ts *.ts",
     "benchmark": "node benchmark/benchmark.js"

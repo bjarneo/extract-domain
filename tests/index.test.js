@@ -1,5 +1,5 @@
 import assert from 'assert';
-import extractDomain from '../dist/extract-domain.module.js';
+import extractDomain from '../dist/extract-domain.modern.js';
 
 const urls = [
     'https://www.npmjs.com/package/extract-domain',
