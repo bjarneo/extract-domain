@@ -8,7 +8,7 @@ const starters = ['.', '/', '@'];
 type Url = string;
 type Urls = string | Array<string>;
 type ReturnUrls = Array<Url> | Array<Promise<Url>>;
-type ReturnUrl = Url | Promise<Url>;
+type ReturnUrl = Url | Promise<Url | null>;
 
 /**
  * Options to extract domain.
@@ -106,7 +106,7 @@ function getDomainFromUrl(url: Url, opts: GetDomainOptions): ReturnUrl {
 export default function extractDomain(
     urls: Urls,
     opts: GetDomainOptions = {}
-): ReturnUrls | ReturnUrl {
+): ReturnUrl | ReturnUrls | null {
     if (typeof urls === 'string') {
         return getDomainFromUrl(urls, opts);
     } else if (Array.isArray(urls)) {
