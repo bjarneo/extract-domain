@@ -18,6 +18,17 @@ Both the browser and nodejs.
 $ npm i --save extract-domain
 ```
 
+### Development
+
+```
+# Install bun https://bun.sh/
+curl -fsSL https://bun.sh/install | bash
+
+
+# tests
+bun test:watch
+```
+
 ### API
 
 -   @param {Urls} urls ["https://www.google.com", "https://www.github.com"] or "https://www.google.com"
@@ -94,19 +105,19 @@ Please note that using the tld flag may significantly slow down the process. Ben
 ## Tests
 
 ```bash
-$ npm test
+$ bun test
 ```
 
 ## Coding style
 
 ```bash
-$ npm run pretty
+$ bun pretty
 ```
 
 ## Benchmark
 
 ```bash
-$ npm run benchmark
+$ bun benchmark
 ```
 
 ## Contribution
