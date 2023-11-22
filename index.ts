@@ -1,13 +1,7 @@
-function throwTypeError(): never {
-    throw new TypeError('The given URL is not a string. Please verify your string|array.');
-}
-
 const endings = ['/', ':', '?', '#'];
 const starters = ['.', '/', '@'];
 
 type Url = string;
-type Urls = string | Array<string>;
-type ReturnUrls = Array<Url> | Array<Promise<Url>>;
 type ReturnUrl = Url | Promise<Url | null>;
 
 /**
@@ -99,30 +93,30 @@ function getDomainFromUrl(url: Url, opts: GetDomainOptions): ReturnUrl {
 }
 
 /**
- * @param {Urls} urls ["https://www.google.com", "https://www.github.com"] or "https://www.google.com"
+ * @param {Url} url https://www.google.com"
  * @param {GetDomainOptions} opts `{ tld: true }` permit to get Top Level Domain like `*.co.uk`
- * @returns {Urls | Promise<Urls>} Return URLs or a promise of URLs if the PSL lib is being used
+ * @returns {Url | Promise<Url>} Return URLs or a promise of URLs if the PSL lib is being used
  */
 export default function extractDomain(
-    urls: Urls,
+    url: Url,
     opts: GetDomainOptions = {}
-): ReturnUrl | ReturnUrls | null {
-    if (typeof urls === 'string') {
-        return getDomainFromUrl(urls, opts);
-    } else if (Array.isArray(urls)) {
-        // lazy type checking (^o^)
-        const extractedUrls: any = [];
-        const len: number = urls.length;
-        let i: number = 0;
+): ReturnUrl | undefined {
+    try {
+        if (typeof url === 'string') {
+            return getDomainFromUrl(url, opts);
+        } else if (Array.isArray(url)) {
+            console.error(
+                'Sorry, it is no longer possible to pass an array of URLs. Please use a string instead.',
+                "I.e. extractDomain('https://www.google.com')."
+            );
 
-        for (; i < len; i++) {
-            const url = getDomainFromUrl(urls[i], opts);
-
-            extractedUrls.push(url);
+            return url;
         }
+    } catch (err) {
+        console.error(err);
 
-        return extractedUrls;
-    } else {
-        throwTypeError();
+        throw new TypeError(
+            'The given string is not a valid URL. https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL'
+        );
     }
 }

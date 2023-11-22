@@ -8,7 +8,7 @@ Learn more about [What is a URL](https://developer.mozilla.org/en-US/docs/Learn/
 
 ## Supports
 
-Both the browser and nodejs.
+The browser, Nodejs, and Bun.
 
 ## Usage
 
@@ -24,19 +24,8 @@ $ npm i --save extract-domain
 # Install bun https://bun.sh/
 curl -fsSL https://bun.sh/install | bash
 
-
 # tests
 bun test:watch
-```
-
-### API
-
--   @param {Urls} urls ["https://www.google.com", "https://www.github.com"] or "https://www.google.com"
--   @param {GetDomainOptions} opts `{ tld: true }` permit to get Top Level Domain like `*.co.uk`
--   @returns {Urls | Promise<Urls>} Returns URL(s) or a promise of URL(s) if the PSL lib is being used
-
-```js
-const res = extractDomain(urls, options);
 ```
 
 ES6 Import
@@ -54,19 +43,10 @@ const extractDomain = require('extract-domain');
 Examples
 
 ```js
-const urls = [
-    'https://www.npmjs.com/package/extract-domain',
-    'http://www.example.com:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereInTheDocument',
-    'http://user:password@example.com:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereInTheDocument',
-    'https://npmjs.com/package/extract-domain',
-    'ftp://example.org/resource.txt',
-    'http://example.co.uk/',
-    'this.is.my@email.com',
-];
+extractDomain('https://www.npmjs.com/package/extract-domain'); // npmjs.com
 
-extractDomain(urls[0]); // npmjs.com
-
-extractDomain(urls); // [ 'npmjs.com', 'example.com', 'example.com', 'npmjs.com', 'example.org', 'co.uk', 'email.com' ]
+// Use the TLD flag, see the section beneath. Returns a promise.
+extractDomain(urls, { tld: true });
 ```
 
 ## TLD support

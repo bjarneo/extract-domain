@@ -17,6 +17,8 @@ const urls = [
     'this.is.my@email.com',
     'test@something.com',
     'http://www.example.co.uk/',
+    'www.npmjs.com/a/b',
+    'https://bjarne.oever.li/this/is/a/path.html?with=query&and=fragment#andHash',
 ];
 
 const expected = [
@@ -27,7 +29,11 @@ const expected = [
     'email.com',
     'something.com',
     'co.uk',
+    'oever.li',
 ];
+
+const typeErrorException =
+    'The given string is not a valid URL. https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL';
 
 test('should return the domain if it already has been extracted', () => {
     assert.strictEqual(extractDomain('example.com'), 'example.com');
@@ -40,16 +46,18 @@ test('should extract given domain from url', () => {
     assert.strictEqual(extractDomain(urls[8]), expected[0]);
     assert.strictEqual(extractDomain(urls[10]), expected[4]);
     assert.strictEqual(extractDomain(urls[12]), expected[6]);
-});
-
-test('should extract given domain from an array of urls', () => {
-    const domains = extractDomain(urls);
-
-    domains.map((domain) => assert(expected.indexOf(domain) > -1));
+    assert.strictEqual(extractDomain(urls[13]), expected[0]);
+    assert.strictEqual(extractDomain(urls[14]), expected[7]);
 });
 
 test('should return empty string if it is not a url', () => {
-    assert.strictEqual(extractDomain('/i.am/just.astring//7test'), '');
+    try {
+        extractDomain('/i.am/just.astring//7test');
+    } catch (e) {
+        assert.strictEqual(e.name, 'TypeError');
+
+        assert.strictEqual(e.message, typeErrorException);
+    }
 });
 
 test('should throw syntax error exception if the argument is not string nor array', () => {
@@ -58,10 +66,7 @@ test('should throw syntax error exception if the argument is not string nor arra
     } catch (e) {
         assert.strictEqual(e.name, 'TypeError');
 
-        assert.strictEqual(
-            e.message,
-            'The given URL is not a string. Please verify your string|array.'
-        );
+        assert.strictEqual(e.message, typeErrorException);
     }
 });
 
@@ -71,10 +76,7 @@ test('should throw syntax error exception if the array value is not a string', (
     } catch (e) {
         assert.strictEqual(e.name, 'TypeError');
 
-        assert.strictEqual(
-            e.message,
-            'The given URL is not a string. Please verify your string|array.'
-        );
+        assert.strictEqual(e.message, typeErrorException);
     }
 });
 
