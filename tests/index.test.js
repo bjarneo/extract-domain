@@ -1,7 +1,7 @@
 import assert from 'assert';
 import { test } from 'bun:test';
 import extractDomain from '../index.ts';
-// import extractDomain from '../dist/extract-domain.modern.js';
+// import extractDomain from '../dist/extract-domain.module.js';
 
 const urls = [
     'https://www.npmjs.com/package/extract-domain',

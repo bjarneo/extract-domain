@@ -8,7 +8,9 @@ Learn more about [What is a URL](https://developer.mozilla.org/en-US/docs/Learn/
 
 ## Supports
 
-Both the browser and nodejs.
+-   ESM
+-   Node.js
+-   Browser
 
 ## Usage
 
@@ -35,20 +37,10 @@ bun test:watch
 -   @param {GetDomainOptions} opts `{ tld: true }` permit to get Top Level Domain like `*.co.uk`
 -   @returns {Urls | Promise<Urls>} Returns URL(s) or a promise of URL(s) if the PSL lib is being used
 
-```js
-const res = extractDomain(urls, options);
-```
-
-ES6 Import
+ESM import
 
 ```js
 import extractDomain from 'extract-domain';
-```
-
-CommonJS Require
-
-```js
-const extractDomain = require('extract-domain');
 ```
 
 Examples

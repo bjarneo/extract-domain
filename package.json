@@ -1,20 +1,17 @@
 {
   "name": "extract-domain",
-  "version": "4.1.5",
+  "version": "5.0.0",
   "description": "Extract domain name from URL",
   "type": "module",
   "source": "index.ts",
   "exports": {
-    "types": "./dist/index.d.ts",
-    "require": "./dist/extract-domain.cjs",
-    "default": "./dist/extract-domain.modern.js"
+    "types": "./dist/index.d.ts"
   },
-  "main": "./dist/extract-domain.cjs",
   "module": "./dist/extract-domain.module.js",
   "author": "Bjarne Oeverli",
   "license": "MIT",
   "scripts": {
-    "build": "npm run pretty && bunx --bun microbundle -i extractDomain -f modern,esm,cjs index.ts",
+    "build": "npm run pretty && bunx --bun microbundle -i extractDomain -f esm index.ts",
     "test": "bun test tests/",
     "test:watch": "bun test --watch tests/",
     "pretty": "prettier --tab-width=4 --print-width=100 --single-quote --trailing-comma=es5 --write *.ts *.ts",
