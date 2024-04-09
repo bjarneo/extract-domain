@@ -1,11 +1,13 @@
 {
   "name": "extract-domain",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "description": "Extract domain name from URL",
   "type": "module",
   "source": "index.ts",
   "exports": {
-    "types": "./dist/index.d.ts"
+    "types": "./dist/index.d.ts",
+    "main": "./dist/extract-domain.module.js",
+    "default": "./dist/extract-domain.module.js"
   },
   "main": "./dist/extract-domain.module.js",
   "module": "./dist/extract-domain.module.js",
